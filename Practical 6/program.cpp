@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 class Complex
@@ -6,16 +6,15 @@ class Complex
     int real, imag;
 
 public:
-
-    void getdata()
+    void accept()
     {
-        cout<<"Enter real and imaginary parts: ";
-        cin>>real>>imag;
+        cout << "Enter real and imaginary parts: ";
+        cin >> real >> imag;
     }
 
     void display()
     {
-        cout<<real<<" + "<<imag<<"i"<<endl;
+        cout << real << " + " << imag << "i" << endl;
     }
 
     Complex operator+(Complex c)
@@ -33,21 +32,21 @@ int main()
 {
     Complex c1, c2, c3;
 
-    cout<<"Enter first complex number:"<<endl;
-    c1.getdata();
+    cout << "Enter first complex number:\n";
+    c1.accept();
 
-    cout<<"Enter second complex number:"<<endl;
-    c2.getdata();
+    cout << "Enter second complex number:\n";
+    c2.accept();
 
     c3 = c1 + c2;
 
-    cout<<"\nFirst complex number: ";
+    cout << "\nFirst complex number: ";
     c1.display();
 
-    cout<<"Second complex number: ";
+    cout << "Second complex number: ";
     c2.display();
 
-    cout<<"Sum of complex numbers: ";
+    cout << "Sum of complex numbers: ";
     c3.display();
 
     return 0;
