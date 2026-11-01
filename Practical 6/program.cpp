@@ -1,41 +1,54 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-class Complex {                 // class declaration  
-    float real, imag;           // data members 
+class Complex
+{
+    int real, imag;
 
-public:                         //member functions
-    // Constructor
-    Complex(float r = 0, float i = 0) {
-        real = r;
-        imag = i;
+public:
+
+    void getdata()
+    {
+        cout<<"Enter real and imaginary parts: ";
+        cin>>real>>imag;
     }
 
-    // Overload += operator
-    Complex& operator+=(const Complex& c) {
-        real += c.real;
-        imag += c.imag;
-        return *this;
+    void display()
+    {
+        cout<<real<<" + "<<imag<<"i"<<endl;
     }
 
-    // Display the complex number
-    void display() {
-        cout << real << " + " << imag << "i" << endl;
+    Complex operator+(Complex c)
+    {
+        Complex temp;
+
+        temp.real = real + c.real;
+        temp.imag = imag + c.imag;
+
+        return temp;
     }
 };
 
-int main() {
-    Complex c1(3, 4), c2(2, 5);       // declaring class object 
+int main()
+{
+    Complex c1, c2, c3;
 
-    cout << "First number:  ";
+    cout<<"Enter first complex number:"<<endl;
+    c1.getdata();
+
+    cout<<"Enter second complex number:"<<endl;
+    c2.getdata();
+
+    c3 = c1 + c2;
+
+    cout<<"\nFirst complex number: ";
     c1.display();
-    cout << "Second number: ";
+
+    cout<<"Second complex number: ";
     c2.display();
 
-    c1 += c2;                          // calls c1.operator+=(c2)
-
-    cout << "After c1 += c2: ";
-    c1.display();
+    cout<<"Sum of complex numbers: ";
+    c3.display();
 
     return 0;
 }
