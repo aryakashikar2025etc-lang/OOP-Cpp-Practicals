@@ -1,32 +1,30 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-float convert(float meters)
+int add(int a, int b)
 {
-    return meters * 100;
+    return a+b;
 }
 
-float convert(double kilometers)
+float add(float a, float b)
 {
-    return kilometers * 1000;
+    return a+b;
 }
 
 int main()
 {
-    float meters;
-    double kilometers;
+    int x, y;
+    float p, q;
 
-    cout << "Enter distance in meters: ";
-    cin >> meters;
+    cout<<"Enter two integers: ";
+    cin>>x>>y;
 
-    cout << "Meters to centimeters = "
-         << convert(meters) << " cm" << endl;
+    cout<<"Sum of integers = "<<add(x,y);
 
-    cout << "\nEnter distance in kilometers: ";
-    cin >> kilometers;
+    cout<<"\nEnter two floating point numbers: ";
+    cin>>p>>q;
 
-    cout << "Kilometers to meters = "
-         << convert(kilometers) << " m" << endl;
+    cout<<"Sum of floating point numbers = "<<add(p,q);
 
     return 0;
 }
