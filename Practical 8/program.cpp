@@ -1,74 +1,72 @@
-#include <iostream>
+
+   #include <iostream>
 using namespace std;
 
-// Base class 1: basic employee information
-class EmployeeInfo {
-protected: 
-    int id;
-    string name;
-
-public: // Function members
-    void inputBasicInfo() {
-        cout << "Enter Employee ID: ";// for id
-        cin >> id;
-       
-        cout << "Enter Name: "; //for name 
-        cin >> name;
-    }
-
-    void displayBasicInfo() const {// display after entering
-        cout << "ID          : " << id ;
-        cout << "\nName        : " << name ;
-    }
-};
-
-// Base class 2: promotion information
-class PromotionInfo {
+class BasicInfo
+{
 protected:
-    float performance;  // rating out of 10
-    int experience;     //  experiance in years 
+    int emp_id, age;
+    char name[50];
 
 public:
-    void inputPromotionInfo() {
-        cout << "Enter Performance Rating (0-10): ";
-        cin >> performance;
-        cout << "Enter Years of Experience: ";
-        cin >> experience;
-    }
+    void getBasicInfo()
+    {
+        cout << "Enter Employee ID: ";
+        cin >> emp_id;
 
-    void displayPromotionInfo() const {
-        cout << "\nPerformance : " << performance << " / 10\n" ;
-        cout << "Experience  : " << experience << " years\n" ;
+        cout << "Enter Employee Name: ";
+        cin.ignore();
+        cin.getline(name, 50);
+
+        cout << "Enter Age: ";
+        cin >> age;
     }
 };
 
-// Derived class: multiple inheritance
-class Employee : public EmployeeInfo, public PromotionInfo {
+class DepartmentInfo
+{
+protected:
+    char department[50];
+    char designation[50];
+
 public:
-    void input() {
-        inputBasicInfo();
-        inputPromotionInfo();
-    }
+    void getDepartmentInfo()
+    {
+        cout << "Enter Department: ";
+        cin.ignore();
+        cin.getline(department, 50);
 
-    bool isEligible() const {
-        return experience >= 3 && performance >= 7.5;
-    }
-
-    void display() const {
-        cout << "\n------ Employee Details ------\n";
-        displayBasicInfo();
-        displayPromotionInfo();
-        cout << "------------------------------\n";
-        if (isEligible())
-            cout << "Result: ELIGIBLE for promotion.\n";
-        else
-            cout << "Result: NOT eligible for promotion.\n";
+        cout << "Enter Designation: ";
+        cin.getline(designation, 50);
     }
 };
 
-int main() {
+class Employee : public BasicInfo, public DepartmentInfo
+{
+public:
+    void accept()
+    {
+        getBasicInfo();
+        getDepartmentInfo();
+    }
+
+    void display()
+    {
+        cout << "\n----- Employee Details -----";
+        cout << "\nEmployee ID: " << emp_id;
+        cout << "\nName: " << name;
+        cout << "\nAge: " << age;
+        cout << "\nDepartment: " << department;
+        cout << "\nDesignation: " << designation;
+    }
+};
+
+int main()
+{
     Employee e;
-    e.input();
+
+    e.accept();
     e.display();
+
     return 0;
 }
