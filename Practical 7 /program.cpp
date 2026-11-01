@@ -1,38 +1,47 @@
 #include <iostream>
 using namespace std;
 
-class String { //declaration of class 
-    char* str;  //data members 
+class String
+{
+    char* str;
 
-public:         // member function 
+public:
+
     // Constructor
-    String() {
+    String()
+    {
         str = new char[100];
         str[0] = '\0';
-        cout << "Constructor called" ;
+        cout << "Constructor called";
     }
 
     // Accept a string
-    void accept() {
+    void accept()
+    {
         cout << "\nEnter a string: ";
         cin.getline(str, 100);
     }
 
     // Display the string
-    void display() {
-        cout << "You entered: " << str ;
+    void display()
+    {
+        cout << "You entered: " << str;
     }
 
     // Destructor
-    ~String() {
+    ~String()
+    {
         delete[] str;
-        cout << "\nDestructor called" ;
+        cout << "\nDestructor called";
     }
 };
 
-int main() {
-    String s; //declaration of object 
-    s.accept(); // calling accept function 
-    s.display(); // calling display function 
+int main()
+{
+    String s;
+
+    s.accept();
+    s.display();
+
     return 0;
 }
