@@ -1,71 +1,54 @@
+Implementation of class and function templates in C++.
+Code:- 
+
 #include <iostream>
 using namespace std;
 
-class BasicInfo
+// Function template to find the larger of two values
+template <class T>
+T maximum(T a, T b)
 {
-protected:
-    int emp_id, age;
-    char name[50];
-
-public:
-    void getBasicInfo()
-    {
-        cout << "Enter Employee ID: ";
-        cin >> emp_id;
-
-        cout << "Enter Employee Name: ";
-        cin.ignore();
-        cin.getline(name, 50);
-
-        cout << "Enter Age: ";
-        cin >> age;
-    }
-};
-
-class DepartmentInfo
+    return (a > b) ? a : b;
+}
+// Class template to store and display a value
+template <class T>
+class Sample
 {
-protected:
-    char department[50];
-    char designation[50];
-
+    T value;
 public:
-    void getDepartmentInfo()
+    // Constructor to initialize the value
+    Sample(T v)
     {
-        cout << "Enter Department: ";
-        cin.ignore();
-        cin.getline(department, 50);
-
-        cout << "Enter Designation: ";
-        cin.getline(designation, 50);
+        value = v;
     }
-};
-
-class Employee : public BasicInfo, public DepartmentInfo
-{
-public:
-    void accept()
-    {
-        getBasicInfo();
-        getDepartmentInfo();
-    }
-
+    // Function to display the value
     void display()
     {
-        cout << "\n----- Employee Details -----";
-        cout << "\nEmployee ID: " << emp_id;
-        cout << "\nName: " << name;
-        cout << "\nAge: " << age;
-        cout << "\nDepartment: " << department;
-        cout << "\nDesignation: " << designation;
+        cout << "Value = " << value << endl;
     }
 };
-
 int main()
 {
-    Employee e;
-
-    e.accept();
-    e.display();
+    int a, b, num;
+    float x, y, decimal;
+    // Function template with integer values
+    cout << "Enter two integers: ";
+    cin >> a >> b;
+    cout << "Maximum Integer = " << maximum(a, b) << endl;
+    // Function template with float values
+    cout << "Enter two decimal values: ";
+    cin >> x >> y;
+    cout << "Maximum Float = " << maximum(x, y) << endl;
+    // Class template with integer value
+    cout << "Enter an integer value: ";
+    cin >> num;
+    Sample<int> s1(num);
+    s1.display();
+    // Class template with float value
+    cout << "Enter a decimal value: ";
+    cin >> decimal;
+    Sample<float> s2(decimal);
+    s2.display();
 
     return 0;
 }
